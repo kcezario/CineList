@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
-import tempfile
 from pathlib import Path
 from decouple import config, Csv
 from dotenv import load_dotenv
@@ -80,6 +79,8 @@ CORS_ALLOW_HEADERS = [
 
 SESSION_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_DOMAIN = config('SESSION_COOKIE_DOMAIN', default='localhost')
+
 CSRF_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SECURE = True
 

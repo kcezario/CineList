@@ -3,9 +3,6 @@ import axios from "axios";
 const api = axios.create({ 
   baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/users/`,
   withCredentials: true,
-  sameSite: "none",
-  httpOnly: false,
-  secure: true,
 });
 
 async function registrarUsuario(username, email, password) {
@@ -30,11 +27,7 @@ async function loginUsuario(username, password) {
 
 async function checkAuth() {
   try {
-    const token = localStorage.getItem('token');
     const response = await api.get('check-auth/', {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      }
     });
     if (response.data.isAuthenticated) {
       const { username } = response.data;
