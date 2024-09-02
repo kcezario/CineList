@@ -78,8 +78,6 @@ CORS_ALLOW_HEADERS = [
     'content-type',
 ]
 
-SESSION_COOKIE_SAMESITE = 'None'
-
 ROOT_URLCONF = 'CineList.urls'
 
 TEMPLATES = [
