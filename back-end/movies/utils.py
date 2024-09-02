@@ -1,7 +1,7 @@
 import requests
 from django.conf import settings
 from django.forms.models import model_to_dict
-from .models import Favorite, CachedMovie
+from .models import Favorite, CachedMovie, Genre
 
 class Movie:
     def __init__(self, tmdb_id, genre_ids, title, overview, release_date, poster_path, backdrop_path, vote_average, user=None):
@@ -48,8 +48,14 @@ class Movie:
         self.is_favorite = Favorite.objects.filter(user=user, tmdb_id=self.tmdb_id).exists()
 
     def genres_by_id(self):
-        from .models import Genre
-        return [genre.name for genre in Genre.objects.filter(id__in=self.genre_ids)]
+        existing_genres = Genre.objects.filter(id__in=self.genre_ids)
+        if existing_genres.count() < len(self.genre_ids):
+            genres_dict = get_genres_names()
+            for genre_data in genres_dict['genres']:
+                Genre.objects.update_or_create(id=genre_data['id'], defaults={'name': genre_data['name']})
+            existing_genres = Genre.objects.filter(id__in=self.genre_ids)
+
+        return [genre.name for genre in existing_genres]
 
     def to_dict(self):
         return {
@@ -135,3 +141,28 @@ def get_top_movies(category):
     response = requests.get(url)
     return response.json()
 
+
+def get_genres_names():
+    return {
+  "genres": [
+    {"id": 28, "name": "Ação"},
+    {"id": 12, "name": "Aventura"},
+    {"id": 16, "name": "Animação"},
+    {"id": 35, "name": "Comédia"},
+    {"id": 80, "name": "Crime"},
+    {"id": 99, "name": "Documentário"},
+    {"id": 18, "name": "Drama"},
+    {"id": 10751, "name": "Família"},
+    {"id": 14, "name": "Fantasia"},
+    {"id": 36, "name": "História"},
+    {"id": 27, "name": "Terror"},
+    {"id": 10402, "name": "Música"},
+    {"id": 9648, "name": "Mistério"},
+    {"id": 10749, "name": "Romance"},
+    {"id": 878, "name": "Ficção científica"},
+    {"id": 10770, "name": "Cinema TV"},
+    {"id": 53, "name": "Thriller"},
+    {"id": 10752, "name": "Guerra"},
+    {"id": 37, "name": "Faroeste"}
+  ]
+}
