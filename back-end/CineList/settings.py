@@ -79,7 +79,8 @@ CORS_ALLOW_HEADERS = [
 
 SESSION_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_DOMAIN = config('SESSION_COOKIE_DOMAIN', default='localhost')
+
+SESSION_COOKIE_PATH = '/'
 
 CSRF_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SECURE = True
@@ -117,10 +118,7 @@ DATABASES = {
         'USER': os.environ.get('POSTGRES_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': os.environ.get('POSTGRES_HOST'),
-        'PORT': '5432',  # Portas geralmente são fixas, mas você pode usar os.environ.get('DB_PORT') se for variável
-        # 'OPTIONS': {
-        #     'sslmode': 'require',
-        # },
+        'PORT': '5432',
     }
 }
 
