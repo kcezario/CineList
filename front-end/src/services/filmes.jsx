@@ -4,8 +4,9 @@ const api = axios.create({
   baseURL: `${import.meta.env.VITE_BACKEND_URL}/movies/`,
   withCredentials: true,
   sameSite: "none",
+  httpOnly: false,
+  secure: true,
 });
-
 async function getFilmesMaisVotados() {
   const res = await api.get("/top/rated");
   return res.data;

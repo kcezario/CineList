@@ -4,6 +4,8 @@ const api = axios.create({
   baseURL: `${import.meta.env.VITE_BACKEND_URL}/api/users/`,
   withCredentials: true,
   sameSite: "none",
+  httpOnly: false,
+  secure: true,
 });
 
 async function registrarUsuario(username, email, password) {

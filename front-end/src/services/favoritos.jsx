@@ -4,6 +4,8 @@ const api = axios.create({
   baseURL: `${import.meta.env.VITE_BACKEND_URL}/movies/fav/`,
   withCredentials: true,
   sameSite: "none",
+  httpOnly: false,
+  secure: true,
 });
 
 async function obterFavoritos() {
