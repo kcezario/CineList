@@ -48,3 +48,4 @@ dist-ssr
 
 /back-end/static/
 /back-end/staticfiles/
+/docs/

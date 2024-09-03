@@ -113,6 +113,7 @@ A aplicação faz chamadas à API do TMDb para obter informações atualizadas s
 - **Backend**: Python, Django
 - **Frontend**: React
 - **Deploy**: Vercel
+- **Banco de Dados**: PostgreSQL
 
 ## Deploy
 
