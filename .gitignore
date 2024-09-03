@@ -45,3 +45,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+/back-end/static/
+/back-end/staticfiles/
