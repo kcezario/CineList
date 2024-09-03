@@ -17,6 +17,7 @@ const Fundo = styled.section`
   text-align: center;
   width: 100%;
   height: 100%;
+  z-index: 1000;
 `;
 
 const Model = styled.div`
@@ -25,6 +26,7 @@ const Model = styled.div`
   height: 70%;
   color: var(--branco);
   position: relative;
+  z-index: 1001;
 `;
 
 const ContainerFlex = styled.div`

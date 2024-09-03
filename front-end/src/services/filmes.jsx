@@ -1,9 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({ 
-  baseURL: `${import.meta.env.VITE_BACKEND_URL}/movies/`,
-  withCredentials: true,
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/movies`,
+  withCredentials: true
 });
+
 async function getFilmesMaisVotados() {
   const res = await api.get("/top/rated");
   return res.data;

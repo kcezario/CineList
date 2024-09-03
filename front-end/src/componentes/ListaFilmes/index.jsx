@@ -2,7 +2,6 @@ import styled from "styled-components";
 import CardFilme from "../CardFilme";
 import { useState } from "react";
 import ModalFilme from "../ModalFilme";
-import semCapa from "./sem-capa.png";
 
 const Container = styled.section`
   display: flex;
@@ -33,17 +32,21 @@ function ListaFilmes({ listaFilmes, atualizarListaFilmes }) {
   };
 
   return (
-    <Container>
-      {listaFilmes.map(filme => (
-        <CardFilme
+   <Container>
+      {listaFilmes.map(filme => {
+        const capa = filme.poster_path
+        ? `https://image.tmdb.org/t/p/w185/${filme.poster_path}`
+        : null;
+        return (
+          <CardFilme
           key={filme.tmdb_id}
           titulo={filme.title}
           nota={filme.vote_average}
-          capa={filme.poster_path ? `https://image.tmdb.org/t/p/w185/${filme.poster_path}` : semCapa}
+          capa={capa}
           favorito={filme.is_favorite}
           aoClicar={() => abrirModal(filme)}
         />
-      ))}
+      )})}
       {modalAberto && ( 
         <ModalFilme filme={filmeSelecionado} aoFechar={fecharModal} aoFavoritar={aoFavoritar} /> 
       )} 

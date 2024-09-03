@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: `${import.meta.env.VITE_BACKEND_URL}/movies/fav/`,
-  withCredentials: true,
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/movies/fav`,
+  withCredentials: true
 });
 
 async function obterFavoritos() {
