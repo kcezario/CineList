@@ -21,7 +21,7 @@ const Container = styled.footer`
 function Rodape() {
   return (
     <Container>
-      <a href="https://github.com/kcezario/CineList" target="_blank">Repositório do Projeto</a>
+      <a href="https://github.com/lpcampanholi/cinelist" target="_blank">Repositório do Projeto</a>
     </Container>
   );
 };
